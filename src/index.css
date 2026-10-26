@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-dvh bg-[#F7F1F1] font-sans text-ink antialiased;
+    margin: 0;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  .font-display {
+    font-variant-numeric: lining-nums;
+  }
+
+  button {
+    font: inherit;
+    touch-action: manipulation;
+  }
+
+  :lang(ko) {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Hero headline: both lines scale with the viewport so they stay roughly equal in width */
+  .hero-title-top {
+    font-size: clamp(2.2rem, 14.4vw, 4rem);
+    letter-spacing: -0.01em;
+  }
+  .hero-title-bottom {
+    font-size: clamp(1rem, 5.8vw, 1.65rem);
+    letter-spacing: 0.03em;
+  }
+  :lang(ko) .hero-title-top {
+    font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 14vw, 3.8rem);
+    letter-spacing: -0.03em;
+  }
+  :lang(ko) .hero-title-bottom {
+    font-size: clamp(1.05rem, 7.2vw, 1.8rem);
+    letter-spacing: 0.2em;
+    padding-left: 0.2em;
+    font-weight: 600;
+  }
+
+  /* Pearl surface of the mobile column */
+  .app-surface {
+    background: linear-gradient(180deg, #ffffff 0%, #f8f3f4 35%, #f3edef 100%);
+  }
+
+  /* Crimson / wine / amber flares at both screen edges around the card, like the reference swirl */
+  .hero-glow {
+    background:
+      radial-gradient(38% 100px at -6% 405px, rgba(100, 6, 36, 0.95), transparent 76%),
+      radial-gradient(60% 175px at -8% 350px, rgba(190, 10, 62, 0.95), transparent 76%),
+      radial-gradient(52% 90px at -6% 275px, rgba(250, 150, 40, 0.92), transparent 76%),
+      radial-gradient(54% 135px at 108% 330px, rgba(150, 0, 48, 0.95), transparent 76%),
+      radial-gradient(56% 120px at 108% 240px, rgba(250, 170, 60, 0.88), transparent 76%),
+      radial-gradient(52% 180px at 108% 460px, rgba(235, 80, 95, 0.65), transparent 76%),
+      radial-gradient(38% 200px at -8% 590px, rgba(222, 60, 96, 0.35), transparent 76%),
+      radial-gradient(40% 170px at 108% 690px, rgba(247, 168, 59, 0.3), transparent 76%);
+    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  }
+
+  /* Desktop backdrop: crimson / wine on the left, amber / coral on the right */
+  .swirl-bg {
+    background:
+      radial-gradient(45vmax 60vmax at 8% 55%, #b3003a 0%, rgba(179, 0, 58, 0) 65%),
+      radial-gradient(40vmax 50vmax at 4% 92%, #6e0a26 0%, rgba(110, 10, 38, 0) 65%),
+      radial-gradient(45vmax 55vmax at 96% 45%, #f7a83b 0%, rgba(247, 168, 59, 0) 65%),
+      radial-gradient(40vmax 45vmax at 92% 88%, #e8505b 0%, rgba(232, 80, 91, 0) 65%),
+      radial-gradient(50vmax 35vmax at 70% 0%, #ffffff 0%, rgba(255, 255, 255, 0) 70%),
+      #f4ecee;
+  }
+
+  /* iOS-style frosted glass surface */
+  .glass {
+    @apply border border-white/70 bg-white/60 shadow-glass backdrop-blur-xl;
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+  }
+
+  .glass-sm {
+    @apply border border-white/70 bg-white/55 shadow-glass-sm;
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+  }
+
+  /* Hide scrollbars on swipe areas */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
