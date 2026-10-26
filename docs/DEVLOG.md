@@ -279,3 +279,22 @@ Requested: bring the deep red swirl mood of the reference (the glow at the scree
 - Verified at 390px (EN): colour is concentrated at the edges, centre stays pearl; hero text, timeline line and dots remain legible.
 
 ---
+
+## Revision 7.2 – emblem as footer seal + edge-flare background / 엠블럼 인장 + 가장자리 물결 배경 (2026-10-26)
+
+**Status: Done, awaiting review / 완료, 검토 대기** (previous version committed as `7d9c5b8`)
+
+### Emblem → official seal (option 1) / 엠블럼을 하단 공식 인장으로
+- Removed the emblem glass card from the hero (it duplicated the `10 MILLION` title). Hero height at 390px: ~370px → **~267px**, so the schedule header now starts at y≈317 and the first two sessions fit on a 740px screen with room to spare.
+- `Footer.tsx`: the emblem now sits at the end of the page between two gold hairlines, above the footer line, **100px wide**, sized by width only (`h-auto`). Measured 1.791 shown vs 1.791 natural = no distortion. Lazy-loaded.
+- Slogan (`Together We Build A Better Tomorrow`) stays in the hero under the VIP pill, between its two hairlines (the brief lists it as a hero element). It can be moved next to the seal if preferred.
+
+### Background refinement / 배경 다듬기 (`.hero-glow` in `index.css`)
+- Flares are now two tilted groups (`::before` left, `::after` right, rotated ∓12° / ±12°): amber → crimson → deep wine on the left, amber → dark crimson → coral on the right, with soft pink/gold tails. Each group has a horizontal mask that fades to nothing toward the centre, so the text column (title, subtitle, VIP pill, slogan, schedule text) stays on clean cream. Colour sits beside the VIP pill / slogan / first schedule cards, like the reference's side glow.
+- Boxes are 450px tall so tails fade out instead of ending on a hard edge (a visible cut-off was fixed). Pure CSS, no images.
+
+### Misc
+- `MenuCarousel`: extra bottom padding so card shadows are no longer clipped under the dots.
+- Verified at 320/390/430px: no horizontal overflow.
+
+---

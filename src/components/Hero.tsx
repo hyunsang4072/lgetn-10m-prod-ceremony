@@ -1,4 +1,3 @@
-import emblem from '@/assets/images/emblem_10m.png'
 import { useLanguage } from '@/context/LanguageContext'
 
 const rise = (delay: number) => ({ animationDelay: `${delay}ms` })
@@ -46,21 +45,7 @@ export default function Hero() {
         </span>
       </div>
 
-      <div
-        className="glass animate-fade-up mx-auto mt-3 w-full max-w-[176px] rounded-[18px] border-champagne-gold/50 px-3.5 py-1.5"
-        style={rise(450)}
-      >
-        <img
-          src={emblem}
-          alt={t.a11y.emblemAlt}
-          width={1184}
-          height={661}
-          className="mx-auto block h-auto w-full object-contain drop-shadow-[0_6px_12px_rgba(129,11,37,0.18)]"
-          decoding="async"
-        />
-      </div>
-
-      <div className="animate-fade-up mx-auto mt-2.5 flex max-w-[330px] items-center gap-2.5" style={rise(540)}>
+      <div className="animate-fade-up mx-auto mt-3.5 flex max-w-[330px] items-center gap-2.5" style={rise(450)}>
         <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-transparent to-champagne-gold/70" />
         <p className="font-display text-[12.5px] italic leading-snug tracking-[0.02em] text-lg-red-deep [html:lang(ko)_&]:font-sans [html:lang(ko)_&]:not-italic">
           {hero.slogan}

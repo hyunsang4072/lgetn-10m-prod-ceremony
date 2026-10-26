@@ -126,7 +126,7 @@ export default function MenuCarousel() {
       >
         <ul
           ref={trackRef}
-          className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain px-[9%] pb-7 pt-4 -mb-3 -mt-3"
+          className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain px-[9%] pb-9 pt-4 -mb-5 -mt-3"
         >
           {categories.map((item, i) => (
             <MenuCard key={item.id} item={item} index={i} total={categories.length} eager={i === 0} />

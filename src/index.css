@@ -81,19 +81,41 @@
     background: linear-gradient(180deg, #ffffff 0%, #f8f3f4 35%, #f3edef 100%);
   }
 
-  /* Crimson / wine / amber flares at both screen edges around the card, like the reference swirl */
+  /* Tilted crimson / wine / amber flares hugging both screen edges; they fade out before the text column. */
   .hero-glow {
-    background:
-      radial-gradient(38% 100px at -6% 405px, rgba(100, 6, 36, 0.95), transparent 76%),
-      radial-gradient(60% 175px at -8% 350px, rgba(190, 10, 62, 0.95), transparent 76%),
-      radial-gradient(52% 90px at -6% 275px, rgba(250, 150, 40, 0.92), transparent 76%),
-      radial-gradient(54% 135px at 108% 330px, rgba(150, 0, 48, 0.95), transparent 76%),
-      radial-gradient(56% 120px at 108% 240px, rgba(250, 170, 60, 0.88), transparent 76%),
-      radial-gradient(52% 180px at 108% 460px, rgba(235, 80, 95, 0.65), transparent 76%),
-      radial-gradient(38% 200px at -8% 590px, rgba(222, 60, 96, 0.35), transparent 76%),
-      radial-gradient(40% 170px at 108% 690px, rgba(247, 168, 59, 0.3), transparent 76%);
+    overflow: hidden;
     -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  }
+  .hero-glow::before,
+  .hero-glow::after {
+    content: '';
+    position: absolute;
+    top: 160px;
+    width: 220px;
+    height: 450px;
+  }
+  .hero-glow::before {
+    left: -95px;
+    transform: rotate(-12deg);
+    background:
+      radial-gradient(60% 95px at 42% 205px, rgba(100, 6, 36, 0.95), transparent 76%),
+      radial-gradient(75% 120px at 48% 125px, rgba(190, 10, 62, 0.95), transparent 76%),
+      radial-gradient(65% 65px at 50% 45px, rgba(250, 150, 40, 0.92), transparent 76%),
+      radial-gradient(70% 120px at 40% 280px, rgba(222, 60, 96, 0.35), transparent 76%);
+    -webkit-mask-image: linear-gradient(90deg, #000 45%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 45%, transparent 100%);
+  }
+  .hero-glow::after {
+    right: -95px;
+    transform: rotate(12deg);
+    background:
+      radial-gradient(60% 95px at 58% 205px, rgba(235, 80, 95, 0.7), transparent 76%),
+      radial-gradient(75% 120px at 52% 125px, rgba(150, 0, 48, 0.95), transparent 76%),
+      radial-gradient(65% 65px at 50% 45px, rgba(250, 170, 60, 0.9), transparent 76%),
+      radial-gradient(70% 120px at 60% 280px, rgba(247, 168, 59, 0.3), transparent 76%);
+    -webkit-mask-image: linear-gradient(270deg, #000 45%, transparent 100%);
+    mask-image: linear-gradient(270deg, #000 45%, transparent 100%);
   }
 
   /* Desktop backdrop: crimson / wine on the left, amber / coral on the right */
