@@ -438,3 +438,29 @@ Reviewer: "cards are fine, but let's do the menu as a carousel – I don't like 
 - Verified: after clicking/dragging the track the outline colour is transparent; the ring shows only after Tab / Shift+Tab. Build passes.
 
 ---
+
+## Step 8 – Final QA, production build, GitHub Pages / 최종 QA 및 배포 설정 (2026-10-26)
+
+**Status: Done, awaiting review / 완료, 검토 대기**
+
+Git: all Phase 1–4 work was already committed (`bf94fae`, "first commit"); the working tree was clean before Step 8. The remote `origin` exists but is **empty** (no branches) and the local branch's upstream is marked gone, so the first push needs `git push -u origin main` (not done here).
+
+### Deploy setup
+- `.github/workflows/deploy.yml`: on push to `main` (and manual run) → Node 22, `npm ci`, `npm run build`, upload `dist`, deploy with `actions/deploy-pages@v4` (permissions `pages: write`, `id-token: write`, concurrency group `pages`). **One-time GitHub setting**: Settings → Pages → Build and deployment → Source = **GitHub Actions**. Public URL will be `https://hyunsang4072.github.io/lgetn-10m-prod-ceremony/`.
+- `vite.config.ts`: `base` is `/lgetn-10m-prod-ceremony/` for build **and for `vite preview`** (before, preview used `/` and could not load the bundle – found while testing); `VITE_BASE` still overrides it (e.g. `VITE_BASE=/` for a custom domain).
+- No SPA 404 fallback needed (single page, no client routes).
+- `index.html`: added `robots: noindex, nofollow` (private VIP link – keeps search engines from listing it) and an iOS `apple-touch-icon` (180×180 PNG generated from the favicon; iOS ignores WebP icons). Note: a public repo / Pages URL is still reachable by anyone who has the link; noindex only stops search indexing.
+- Footer emblem: `emblem_10m.png` (93 KB) → `emblem_10m.webp` (26 KB, 360px wide, width-only resize, ratio 1.791 kept); the transparent PNG is archived in `docs/source-assets/`.
+
+### Production QA (`npm run build` + `vite preview` under the Pages sub-path)
+- Build passes (`tsc -b` + Vite). Output: JS 245 KB (gzip 77 KB), CSS 80 KB (gzip 22 KB); a first visit loads **11 requests** (html, css, js, 6 WebP images, 2 font subsets – Pretendard subsets only load for Korean glyphs).
+- Browser run: 0 failed requests, 0 console errors/warnings, 0 page errors, all assets correct MIME type, 0 broken images, every image has `alt`, heading order `h1 → h2 (Schedule, Luncheon) → h3 (menu cards)`, fonts Inter + Playfair loaded, `<html lang>` follows the toggle.
+- Responsive matrix, EN and KO, 320×568, 360×780, 375×667, 375×812, 390×844, 393×852, 412×915, 414×896, 430×932, 768×1024, 1280×800: no horizontal overflow, header right padding 12px and logo clear space ≥ 16px everywhere (smallest gap 51px), hero title inside the viewport, schedule block (header + 5 cards) fits one screen on every size except **320×568** in EN (690px; this is an original iPhone SE – KO fits at 443px). At 390×844: 496px EN / 425px KO.
+- Known/accepted: `Korean_Menu.png`, `Thai_Menu.png`, `Mexican_Menu.png`, `Dessert_Menu.png` in `src/assets/images` are unused (too low-resolution) and not bundled; menu photos for Korean/Thai/Mexican are small sources (465–610px).
+
+### To go live
+1. `git push -u origin main`
+2. GitHub → Settings → Pages → Source: GitHub Actions
+3. Wait for the "Deploy to GitHub Pages" workflow, open the URL above, test on a real phone (iOS Safari + Android Chrome).
+
+---

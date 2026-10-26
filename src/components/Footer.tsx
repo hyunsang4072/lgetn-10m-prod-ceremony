@@ -1,4 +1,4 @@
-import emblem from '@/assets/images/emblem_10m.png'
+import emblem from '@/assets/images/emblem_10m.webp'
 import { useLanguage } from '@/context/LanguageContext'
 
 export default function Footer() {
