@@ -1,4 +1,5 @@
 import { useLanguage } from '@/context/LanguageContext'
+import SwirlBand from './SwirlBand'
 
 const rise = (delay: number) => ({ animationDelay: `${delay}ms` })
 
@@ -7,7 +8,7 @@ export default function Hero() {
   const { hero } = t
 
   return (
-    <section className="relative px-4 pb-5 pt-3 text-center">
+    <section className="relative px-4 pb-[120px] pt-3 text-center">
       <span
         className="animate-fade-up inline-flex items-center rounded-full border border-champagne-gold/70 bg-gradient-to-b from-[#F9EBC4] via-[#F0D49C] to-[#E4BA68] px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-lg-red-dark shadow-[0_3px_12px_rgba(217,164,65,0.35),inset_0_1px_0_rgba(255,255,255,0.85)]"
         style={rise(0)}
@@ -39,12 +40,6 @@ export default function Hero() {
         </p>
       </div>
 
-      <div className="animate-fade-up mt-3" style={rise(360)}>
-        <span className="inline-flex whitespace-nowrap rounded-full border border-champagne-gold/60 bg-white/40 px-3 py-1 text-[clamp(8.5px,2.5vw,9.5px)] font-medium uppercase tracking-[0.08em] text-champagne-gold-deep backdrop-blur-md">
-          {hero.badgeText}
-        </span>
-      </div>
-
       <div className="animate-fade-up mx-auto mt-3.5 flex max-w-[330px] items-center gap-2.5" style={rise(450)}>
         <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-transparent to-champagne-gold/70" />
         <p className="font-display text-[12.5px] italic leading-snug tracking-[0.02em] text-lg-red-deep [html:lang(ko)_&]:font-sans [html:lang(ko)_&]:not-italic">
@@ -52,6 +47,8 @@ export default function Hero() {
         </p>
         <span aria-hidden className="h-px flex-1 bg-gradient-to-l from-transparent to-champagne-gold/70" />
       </div>
+
+      <SwirlBand />
     </section>
   )
 }

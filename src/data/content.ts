@@ -53,7 +53,6 @@ export interface ContentData {
     backToTop: string
   }
   header: {
-    vipAccess: string
     dayPrefix: string
     dDay: string
     ended: string
@@ -67,7 +66,6 @@ export interface ContentData {
     date: string
     time: string
     slogan: string
-    badgeText: string
   }
   schedule: {
     sectionTitle: string
@@ -101,7 +99,6 @@ const en: ContentData = {
     backToTop: 'Back to top',
   },
   header: {
-    vipAccess: 'VIP ACCESS',
     dayPrefix: 'D-',
     dDay: 'D-DAY',
     ended: 'ENDED',
@@ -115,7 +112,6 @@ const en: ContentData = {
     date: 'Friday, Nov 13, 2026',
     time: '12:00 PM CST',
     slogan: 'Together We Build A Better Tomorrow',
-    badgeText: 'EXCLUSIVE VIP DIGITAL INVITATION',
   },
   schedule: {
     sectionTitle: 'SCHEDULE',
@@ -238,7 +234,6 @@ const ko: ContentData = {
     backToTop: '맨 위로',
   },
   header: {
-    vipAccess: 'VIP 초청',
     dayPrefix: 'D-',
     dDay: 'D-DAY',
     ended: '종료',
@@ -252,7 +247,6 @@ const ko: ContentData = {
     date: '2026년 11월 13일 (금)',
     time: '오후 12:00 CST',
     slogan: '함께 만들어가는 더 나은 내일',
-    badgeText: 'VIP 디지털 초청장',
   },
   schedule: {
     sectionTitle: '식순',

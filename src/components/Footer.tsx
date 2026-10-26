@@ -16,7 +16,7 @@ export default function Footer() {
           height={661}
           loading="lazy"
           decoding="async"
-          className="block h-auto w-[100px] shrink-0 object-contain drop-shadow-[0_3px_8px_rgba(129,11,37,0.18)]"
+          className="block h-auto w-[72px] shrink-0 object-contain drop-shadow-[0_3px_8px_rgba(129,11,37,0.18)]"
         />
         <span aria-hidden className="h-px flex-1 bg-gradient-to-l from-transparent to-champagne-gold/70" />
       </div>

@@ -44,7 +44,7 @@ function SessionCard({ item, active }: { item: ScheduleItem; active: boolean }) 
           )}
         </div>
         <p className="mt-0.5 text-[15px] font-bold leading-tight text-ink">{item.title}</p>
-        <div className="mt-1 flex items-start justify-between gap-3 text-[11px] leading-snug text-ink-mute">
+        <div className="mt-1 flex items-start justify-between gap-3 text-[11px] leading-snug text-ink-soft">
           <span>{item.description}</span>
           <span className="max-w-[38%] shrink-0 text-right">{item.location}</span>
         </div>
@@ -65,7 +65,7 @@ function SessionCard({ item, active }: { item: ScheduleItem; active: boolean }) 
         <span className="whitespace-nowrap text-[11.5px] tabular-nums text-ink-soft">{item.time}</span>
         <span className="text-[13.5px] font-semibold text-ink">{item.title}</span>
       </p>
-      <div className="mt-1 flex items-start justify-between gap-3 text-[11px] leading-snug text-ink-mute">
+      <div className="mt-1 flex items-start justify-between gap-3 text-[11px] leading-snug text-ink-soft">
         <span>{item.description}</span>
         <span className="max-w-[38%] shrink-0 text-right">{item.location}</span>
       </div>
@@ -99,7 +99,7 @@ export default function Timeline() {
   return (
     <section className="px-4 pb-8">
       <div className="mb-3 flex items-center justify-between gap-2">
-        <h2 className="flex items-center gap-2 text-[13px] text-ink">
+        <h2 className="glass-sm flex items-center gap-2 rounded-full px-3 py-1 text-[13px] text-ink">
           <CalendarIcon />
           <span>
             <b className="font-bold tracking-wide">{sectionTitle}</b>
@@ -109,8 +109,8 @@ export default function Timeline() {
             </span>
           </span>
         </h2>
-        <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-ink/[0.06] px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-champagne-gold-bright" />
+        <span className="glass-sm inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
+          <span className={`h-1.5 w-1.5 rounded-full bg-champagne-gold-bright ${active >= 0 ? 'animate-pulse' : ''}`} />
           {liveSync}
         </span>
       </div>

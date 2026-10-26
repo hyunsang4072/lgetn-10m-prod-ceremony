@@ -4,14 +4,6 @@ import { useLanguage } from '@/context/LanguageContext'
 import { useDDay } from '@/hooks/useDDay'
 import LanguageToggle from './LanguageToggle'
 
-function CrownIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 shrink-0" fill="currentColor">
-      <path d="M3 7.5 7.5 11 12 4l4.5 7L21 7.5 19.2 18H4.8L3 7.5Zm2.2 12.5h13.6v1.6H5.2V20Z" />
-    </svg>
-  )
-}
-
 function useScrolled(threshold = 8) {
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
@@ -49,14 +41,9 @@ export default function Header() {
           <img src={logo} alt={t.a11y.logoAlt} className="block h-4 w-auto" width={107} height={16} />
         </div>
 
-        <div className="flex shrink-0 items-center gap-1.5">
-          <span className="inline-flex h-8 shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-champagne-gold/60 bg-gradient-to-b from-white/90 to-[#FBF1DA]/90 px-2 text-[10px] font-semibold uppercase tracking-[0.06em] text-champagne-gold-deep shadow-glass-sm max-[339px]:hidden">
-            <CrownIcon />
-            <span className="max-[384px]:sr-only">{t.header.vipAccess}</span>
-          </span>
-
-          <div className="glass-sm flex h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full pl-2 pr-1">
-            <span className="text-[11px] font-semibold tabular-nums tracking-wide text-ink">{ddayLabel}</span>
+        <div className="flex shrink-0 items-center">
+          <div className="glass-sm flex h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full pl-2.5 pr-1">
+            <span className="text-[12px] font-bold tabular-nums tracking-wide text-lg-red">{ddayLabel}</span>
             <LanguageToggle />
           </div>
         </div>

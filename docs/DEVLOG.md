@@ -298,3 +298,78 @@ Requested: bring the deep red swirl mood of the reference (the glow at the scree
 - Verified at 320/390/430px: no horizontal overflow.
 
 ---
+
+### Revision 5.2 – live highlight uses Clarksville time; LIVE SYNC dot only blinks while live (2026-10-26)
+Question: is the blinking tied to Clarksville local time?
+- **Active-session highlight (pulsing dot + red ring + `aria-current`)**: yes. `utils/eventTime.ts` reads the current time in `America/Chicago` (DST-aware, CST on Nov 13) and compares it with the session ranges in `content.ts`; the viewer's own time zone is irrelevant. Verified by faking the clock in Chicago, Seoul and London browser time zones: identical results — none before 12:20 CST, session 1 at 12:20, keynote at 13:10, session 4 at 13:25, session 5 until 15:09, none from 15:10, and nothing on other days.
+- **Found**: the amber dot in the `LIVE SYNC` chip pulsed permanently (decorative, not time-based), which looked like a live indicator even on Oct 26. It now pulses **only while a session is in progress** (event day, inside a session window); otherwise it is a static amber dot as in the reference.
+- Not changed: header counter shows `D-DAY` for the whole of Nov 13 (Clarksville date), `D-18` today.
+
+---
+
+## Revision 8.0 – header cleanup, days-left counter, swirl band (2026-10-26)
+
+**Status: Done, awaiting review / 완료, 검토 대기**
+
+### Header (`Header.tsx`, `content.ts`)
+- Removed the top `VIP ACCESS` pill (and its crown icon); `header.vipAccess` deleted from content.
+- Counter now reads **`D-18` + `18 days left`** (KO: `D-18` + `18일 남음`, singular `1 day left`). `D-xx` is bold crimson; the "days left" text is hidden below 340px only. Event day shows `D-DAY`, afterwards `ENDED` / `종료`.
+- The `D-DAY` the reviewer saw earlier came from my own test: a fake Playwright clock (13:10 on Nov 13) was left installed in the shared browser. Reset to the real clock; the page shows `D-18` today (Oct 26 → Nov 13, Clarksville date).
+- Fit checked at 320/339/340/360/375/390/430/1280px in EN and KO: right padding 12px, logo clear space ≥ 16px, no overflow.
+
+### Hero
+- Removed `EXCLUSIVE VIP DIGITAL INVITATION` (and `hero.badgeText` in both languages).
+- The freed space plus extra bottom padding (`pb-[104px]`) forms a text-free gap between the slogan and `SCHEDULE`, filled by a new **`SwirlBand.tsx`**: inline SVG, three soft ribbons per side (left amber → crimson → deep wine, right gold → dark crimson → coral) whose tips dissolve into the cream centre. Light Gaussian blur, vertical fade mask (`.hero-swirl`) so nothing touches the slogan or the schedule text. It sits behind everything (`-z-10`; the app column is now an `isolate` stacking context).
+- Replaced the previous radial-gradient flares (`.hero-glow`, removed from `AppShell` and CSS) – those looked blotchy in the gap.
+- `SCHEDULE • 5 Sessions` title and the `LIVE SYNC` chip got frosted-glass backgrounds so they stay legible where the ribbons end.
+
+### Verification / 검증
+- `npm run build` passes; no horizontal overflow at 320–1280px.
+- Visual check at 390px (EN, real clock).
+
+---
+
+### Revision 8.1 – ambient glow instead of ribbons; "days left" text removed (2026-10-26)
+- **Deleted `SwirlBand.tsx`** (SVG ribbons were too defined/artificial). Replaced by `AmbientGlow.tsx`: seven absolutely positioned `div`s with `radial-gradient(closest-side, …, transparent)` backgrounds and `blur-[64px]` (out-of-focus look, no edges). No crimson / wine: colours are **champagne gold `#F2C26B`, peach `#F8B08A`, salmon `#F79686`, rose `#F08294`** at the left/right edges plus a warm-white core in the centre so the slogan and `SCHEDULE` area stays bright. The vertical fade mask is kept as `.hero-ambient`.
+- Blur is 64px rather than 100px+: on top of a `closest-side` gradient a 100px blur diluted the colour to almost nothing (first attempt was nearly invisible) and costs more GPU on phones; the result is equally borderless.
+- Header: removed the `18 days left` text; only `D-18` remains (bold crimson) next to the language toggle. `daysLeft` / `daysLeftOne` deleted from `content.ts`.
+- Note for dev: after deleting/recreating a component file Tailwind may not regenerate its classes until the dev server is restarted.
+- Verified: no horizontal overflow at 320 / 375 / 430 / 1280px; build passes.
+
+---
+
+### Revision 8.2 – vivid colours restored (2026-10-26)
+The pastel glow (8.1) left the gap looking empty. `AmbientGlow.tsx` rebuilt with full-strength colours and bigger masses; still pure CSS gradients + blur, no vector edges.
+- Colours (solid core, `radial-gradient(closest-side, c 0%, c 55-58%, transparent)` so the blur does not wash them out): left **amber `rgb(250,160,40)` → deep crimson `rgb(200,10,64)` → wine `rgb(104,6,40)`**; right **coral `rgb(248,98,84)` → dark crimson `rgb(168,0,54)` → gold `rgb(252,176,56)`**; a rose bridge `rgb(232,70,100)` across the centre so the middle is filled too.
+- Sizes: main masses 320×160px (up from ~250×170 pastel blobs), side masses 240×130 / 250×120; blur 44px (enough to remove every edge without diluting the colour).
+- Band moved 12px lower (`-bottom-[76px]`) so the slogan stays on a clean background; the vertical fade mask and the frosted `SCHEDULE` / `LIVE SYNC` chips are unchanged and keep text legible.
+- Verified EN + KO at 390px visually and no horizontal overflow at 320 / 390 / 430 / 1280px; build passes.
+
+---
+
+### Revision 8.3 – page-wide colour field + glass for legibility (2026-10-26)
+Direction from review: the colour was trapped in the narrow gap under the slogan; the reference has it spread behind the whole schedule, with legibility solved by frosted-glass cards, not by masks.
+- **Mask removed**: the vertical fade mask (`.hero-ambient`) is gone from `index.css`.
+- **`AmbientGlow` moved to `AppShell`** and scaled up: it is now a 1150px-tall isolated layer at the top of the column (behind everything, `-z-10`), with 9 blobs 220–420px tall: left amber → crimson → wine → rose, right coral → dark crimson → gold → coral, plus a rose bridge in the centre between slogan and schedule. Colour now runs from just under the slogan to the menu header.
+- **`mix-blend-screen`** on the bright blobs (the layer is `isolate`d so they only blend with each other): overlaps glow instead of going muddy. The two deepest masses (wine, dark crimson) stay on normal blending so the screen edges keep their depth. Blur 56px.
+- **Glassmorphism for readability**: `.glass-sm` is now `bg-white/70` + `backdrop-blur(22px) saturate(150%)` (was 55% / 16px); schedule descriptions/locations use `text-ink-soft` instead of `ink-mute`; the `SPECIAL VIP LUNCHEON` heading became a glass chip like `SCHEDULE`. The keynote card keeps its cream gradient.
+- **Timeline over strong colour**: the red line and the dots got a white outline ring so they do not disappear on the crimson edge.
+- Slogan area stays clean: the first blob starts below it (top ≈ 270px) and the centre is only touched by the soft rose bridge.
+- Verified EN + KO at 320 / 390 / 430 / 1280px: no horizontal overflow, page height unchanged; build passes.
+
+---
+
+### Revision 8.4 – back to a crisp swirl band, clean cream below (2026-10-26)
+Direction from review: the page-wide red field (8.3) darkened the schedule and menu and no longer looked like the reference. Reverted to a limited, sharp graphic.
+- **Deleted `AmbientGlow.tsx`** and removed it from `AppShell` (no blur, no blend modes, no page-wide colour).
+- **`SwirlBand.tsx` restored** as a crisp inline SVG: opaque layered ribbons (wine → crimson, crimson → coral, coral → gold, front gold) crossing the full width, with two thin sheen lines. No filters, no blur, no transparency in the fills. It is anchored to the bottom of the hero and is 96px tall, so it lives **only in the gap between the slogan and `SCHEDULE`** (hero bottom padding 120px; ~8px clear above/below).
+- **Below the band everything is the original clean cream**: `.glass-sm` back to white 55% + 16px blur, `SPECIAL VIP LUNCHEON` back to a plain heading, timeline line/dots back to the red-halo style. Schedule descriptions keep the slightly darker `text-ink-soft` for legibility.
+- Verified EN + KO at 320 / 390 / 430 / 1280px: no horizontal overflow; build passes.
+- Dev note: Tailwind needed a dev-server restart after the component files were deleted/created.
+
+---
+
+### Revision 8.5 – smaller footer emblem (2026-10-26)
+- Footer emblem width 100px → **72px** (width only, `h-auto`, so the aspect ratio stays 1.791).
+
+---
