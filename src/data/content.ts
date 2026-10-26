@@ -8,7 +8,7 @@ export type Language = 'en' | 'ko'
 export const LANGUAGES: readonly Language[] = ['en', 'ko'] as const
 
 /** Event start (Clarksville, CST) – drives the D-day counter. */
-export const EVENT_START_ISO = '2026-11-13T12:00:00-06:00'
+export const EVENT_START_ISO = '2026-11-13T12:20:00-06:00'
 export const EVENT_TIMEZONE = 'America/Chicago'
 
 export interface ScheduleItem {
@@ -21,7 +21,6 @@ export interface ScheduleItem {
   /** Keynote card: glowing border + badges */
   highlight?: boolean
   badge?: string
-  chip?: string
 }
 
 export interface Dish {
@@ -49,7 +48,6 @@ export interface ContentData {
     emblemAlt: string
     scheduleList: string
     menuCarousel: string
-    goToSlide: string
     backToTop: string
   }
   header: {
@@ -58,7 +56,7 @@ export interface ContentData {
     ended: string
   }
   hero: {
-    milestoneBadge: string
+    eyebrow: string
     titleTop: string
     titleBottom: string
     keyMessage: string
@@ -95,7 +93,6 @@ const en: ContentData = {
     emblemAlt: '10M Milestone',
     scheduleList: 'Ceremony schedule',
     menuCarousel: 'Lunch menu options',
-    goToSlide: 'Go to slide',
     backToTop: 'Back to top',
   },
   header: {
@@ -104,13 +101,13 @@ const en: ContentData = {
     ended: 'ENDED',
   },
   hero: {
-    milestoneBadge: 'MILESTONE CELEBRATION',
+    eyebrow: 'YOU ARE INVITED',
     titleTop: '10 MILLION',
     titleBottom: 'PRODUCTION CEREMONY',
     keyMessage: 'A New Milestone in Laundry Innovation',
     location: 'Clarksville, Tennessee',
     date: 'Friday, Nov 13, 2026',
-    time: '12:00 PM CST',
+    time: '12:20 PM CST',
     slogan: 'Together We Build A Better Tomorrow',
   },
   schedule: {
@@ -121,26 +118,25 @@ const en: ContentData = {
       {
         id: 'welcome',
         time: '12:20 – 12:50',
-        title: 'Welcome & Lunch',
-        description: 'Casual networking',
-        location: 'Cafeteria / Dining Hall',
+        title: 'Welcome & VIP Luncheon',
+        description: 'Networking lunch',
+        location: 'Training Room',
       },
       {
         id: 'opening',
         time: '12:50 – 13:05',
         title: 'Opening & History',
-        description: 'Kickoff showcase & Clarksville site history',
+        description: 'Opening video & Tennessee site history',
         location: 'Main Stage',
       },
       {
         id: 'reveal',
         time: '13:05 – 13:25',
-        title: '10 Millionth Unit Reveal',
-        description: 'Grand unveiling & VIP keynote speeches',
+        title: '10 Millionth Unit Ceremony',
+        description: '10M unit unveiling, congratulatory videos & remarks',
         location: 'Main Stage',
         highlight: true,
         badge: 'KEYNOTE • REVEAL',
-        chip: 'SPECIAL MILLIONTH UNIT REVEAL',
       },
       {
         id: 'celebration',
@@ -153,7 +149,7 @@ const en: ContentData = {
         id: 'closing',
         time: '14:05 – 15:10',
         title: 'Closing & Send-Off',
-        description: 'Final announcements & VIP send-off',
+        description: 'Closing remarks & VIP send-off',
         location: 'Main Entrance',
       },
     ],
@@ -230,7 +226,6 @@ const ko: ContentData = {
     emblemAlt: '1,000만 대 생산 기념 엠블럼',
     scheduleList: '기념식 식순',
     menuCarousel: '오찬 메뉴 선택지',
-    goToSlide: '슬라이드 이동',
     backToTop: '맨 위로',
   },
   header: {
@@ -239,13 +234,13 @@ const ko: ContentData = {
     ended: '종료',
   },
   hero: {
-    milestoneBadge: '마일스톤 기념',
+    eyebrow: '귀하를 초대합니다',
     titleTop: '1,000만 대',
     titleBottom: '생산 기념식',
     keyMessage: '세탁 혁신의 새로운 이정표',
     location: '테네시주 클락스빌',
     date: '2026년 11월 13일 (금)',
-    time: '오후 12:00 CST',
+    time: '오후 12:20 (CST)',
     slogan: '함께 만들어가는 더 나은 내일',
   },
   schedule: {
@@ -256,39 +251,38 @@ const ko: ContentData = {
       {
         id: 'welcome',
         time: '12:20 – 12:50',
-        title: '환영 및 오찬',
-        description: '자유로운 네트워킹',
-        location: '구내식당',
+        title: '환영 및 VIP 오찬',
+        description: '네트워킹 오찬',
+        location: '트레이닝 룸',
       },
       {
         id: 'opening',
         time: '12:50 – 13:05',
-        title: '개회 및 클락스빌 역사',
-        description: '오프닝 영상 및 클락스빌 공장 역사 소개',
+        title: '오프닝 및 법인 연혁',
+        description: '오프닝 영상 및 TN 법인 연혁',
         location: '메인 무대',
       },
       {
         id: 'reveal',
         time: '13:05 – 13:25',
-        title: '1,000만 번째 제품 공개',
-        description: '제품 언베일링 및 VIP 기념사',
+        title: '천만 대 생산 기념식',
+        description: '천만 대 제품 공개, 축전 영상 및 축사',
         location: '메인 무대',
         highlight: true,
         badge: '키노트 • 공개',
-        chip: '1,000만 번째 제품 특별 공개',
       },
       {
         id: 'celebration',
         time: '13:25 – 14:05',
-        title: '기념식 및 시상',
-        description: '서명식, 케이크 커팅, 유공자 포상, 기념사진 촬영',
+        title: '기념 행사 및 시상',
+        description: '사이닝, 케이크 커팅, 공로자 시상 및 기념 촬영',
         location: '메인 무대',
       },
       {
         id: 'closing',
         time: '14:05 – 15:10',
         title: '폐회 및 환송',
-        description: '마무리 안내 및 VIP 환송',
+        description: '마무리 인사 및 VIP 환송',
         location: '정문',
       },
     ],

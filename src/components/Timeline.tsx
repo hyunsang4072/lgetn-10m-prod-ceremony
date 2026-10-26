@@ -34,40 +34,35 @@ function Dot({ highlight, active }: { highlight?: boolean; active: boolean }) {
 function SessionCard({ item, active }: { item: ScheduleItem; active: boolean }) {
   if (item.highlight) {
     return (
-      <div className="rounded-2xl border border-champagne-gold/80 bg-gradient-to-b from-[#FFFCF3] to-[#FFF1D4] px-3 py-2.5 text-left shadow-glow">
+      <div className="rounded-2xl border border-champagne-gold/80 bg-gradient-to-b from-[#FFFCF3] to-[#FFF1D4] px-3 py-[11px] text-left shadow-glow">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-[11.5px] tabular-nums text-ink-soft">{item.time}</span>
+          <span className="text-[13px] tabular-nums text-ink-soft">{item.time}</span>
           {item.badge && (
-            <span className="whitespace-nowrap rounded-full bg-gradient-to-r from-[#F5B942] to-[#F9D888] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-lg-red-dark">
+            <span className="whitespace-nowrap rounded-full bg-gradient-to-r from-[#F5B942] to-[#F9D888] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em] text-lg-red-dark">
               {item.badge}
             </span>
           )}
         </div>
         <p className="mt-0.5 text-[15px] font-bold leading-tight text-ink">{item.title}</p>
-        <div className="mt-1 flex items-start justify-between gap-3 text-[11px] leading-snug text-ink-soft">
-          <span>{item.description}</span>
-          <span className="max-w-[38%] shrink-0 text-right">{item.location}</span>
+        <div className="mt-0.5 flex items-start justify-between gap-3 text-[13px] leading-snug text-ink-soft">
+          <span className="min-w-0">{item.description}</span>
+          <span className="max-w-[40%] shrink-0 text-right">{item.location}</span>
         </div>
-        {item.chip && (
-          <span className="mt-1.5 inline-flex rounded-md border border-ink/15 bg-white/70 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
-            {item.chip}
-          </span>
-        )}
       </div>
     )
   }
 
   return (
     <div
-      className={`glass-sm rounded-2xl px-3 py-2.5 text-left ${active ? 'ring-2 ring-lg-red/40' : ''}`}
+      className={`glass-sm rounded-2xl px-3 py-[11px] text-left ${active ? 'ring-2 ring-lg-red/40' : ''}`}
     >
       <p className="flex flex-wrap items-baseline gap-x-2 leading-tight">
-        <span className="whitespace-nowrap text-[11.5px] tabular-nums text-ink-soft">{item.time}</span>
-        <span className="text-[13.5px] font-semibold text-ink">{item.title}</span>
+        <span className="whitespace-nowrap text-[13px] tabular-nums text-ink-soft">{item.time}</span>
+        <span className="text-[14px] font-semibold text-ink">{item.title}</span>
       </p>
-      <div className="mt-1 flex items-start justify-between gap-3 text-[11px] leading-snug text-ink-soft">
-        <span>{item.description}</span>
-        <span className="max-w-[38%] shrink-0 text-right">{item.location}</span>
+      <div className="mt-0.5 flex items-start justify-between gap-3 text-[13px] leading-snug text-ink-soft">
+        <span className="min-w-0">{item.description}</span>
+        <span className="max-w-[40%] shrink-0 text-right">{item.location}</span>
       </div>
     </div>
   )

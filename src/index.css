@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --divider-gap: clamp(20px, 5vw, 32px);
+  }
+
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -54,6 +58,12 @@
 }
 
 @layer components {
+  /* Wave between the slogan and the schedule: the same gap above and below keeps it centred. */
+  .section-divider {
+    margin-block: var(--divider-gap);
+    line-height: 0;
+  }
+
   /* Hero headline: both lines scale with the viewport so they stay roughly equal in width */
   .hero-title-top {
     font-size: clamp(2.2rem, 14.4vw, 4rem);

@@ -1,5 +1,4 @@
 import { useLanguage } from '@/context/LanguageContext'
-import SwirlBand from './SwirlBand'
 
 const rise = (delay: number) => ({ animationDelay: `${delay}ms` })
 
@@ -8,13 +7,14 @@ export default function Hero() {
   const { hero } = t
 
   return (
-    <section className="relative px-4 pb-[120px] pt-3 text-center">
-      <span
-        className="animate-fade-up inline-flex items-center rounded-full border border-champagne-gold/70 bg-gradient-to-b from-[#F9EBC4] via-[#F0D49C] to-[#E4BA68] px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-lg-red-dark shadow-[0_3px_12px_rgba(217,164,65,0.35),inset_0_1px_0_rgba(255,255,255,0.85)]"
-        style={rise(0)}
-      >
-        {hero.milestoneBadge}
-      </span>
+    <section className="relative px-4 pt-3 text-center">
+      <div className="animate-fade-up mx-auto flex max-w-[340px] items-center gap-3" style={rise(0)}>
+        <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-transparent to-champagne-gold" />
+        <p className="shrink-0 text-[11px] font-medium uppercase leading-none tracking-[0.3em] text-champagne-gold-deep max-[359px]:tracking-[0.2em] [html:lang(ko)_&]:tracking-[0.18em]">
+          {hero.eyebrow}
+        </p>
+        <span aria-hidden className="h-px flex-1 bg-gradient-to-l from-transparent to-champagne-gold" />
+      </div>
 
       <h1 className="mt-2 flex flex-col items-center">
         <span
@@ -47,8 +47,6 @@ export default function Hero() {
         </p>
         <span aria-hidden className="h-px flex-1 bg-gradient-to-l from-transparent to-champagne-gold/70" />
       </div>
-
-      <SwirlBand />
     </section>
   )
 }

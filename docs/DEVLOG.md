@@ -373,3 +373,68 @@ Direction from review: the page-wide red field (8.3) darkened the schedule and m
 - Footer emblem width 100px → **72px** (width only, `h-auto`, so the aspect ratio stays 1.791).
 
 ---
+
+## Revision 9 – refinement plan from final-version review (2026-10-26)
+Four phases, one at a time, each reviewed before the next. Project stays React/Vite (the brief says "vanilla unless a framework exists"). Hard constraint for all phases: the schedule header + 5 cards must not grow taller (must fit one screen at 360x780, 390x844, 430x932).
+
+### Phase 1 – Hero eyebrow / 히어로 상단 문구 (done, awaiting review)
+- Removed the gold gradient pill `MILESTONE CELEBRATION` (looked clickable). New non-interactive eyebrow in `Hero.tsx`: thin gold hairline – `YOU ARE CORDIALLY INVITED` / `귀하를 정중히 초대합니다` – hairline. No background, border, radius or shadow; 11px, weight 500, tracking 0.3em (0.2em below 360px, 0.18em in Korean), colour `champagne-gold-deep #8F6516` (≈5:1 on cream).
+- `content.ts`: `hero.milestoneBadge` replaced by `hero.eyebrow` (both languages).
+- Verified EN + KO at 320 / 360 / 390 / 430px: one line, no overflow (EN text 215px at 320 inside a 273px row, hairlines ≥17px); build passes.
+- Next: Phase 2 (wave as standalone centred divider), Phase 3 (schedule data + hero time 12:20), Phase 4 (menu tabs replacing the carousel).
+
+---
+
+### Phase 2 – Standalone wave divider / 물결 분리·중앙 정렬 (done, awaiting review)
+- Note: the eyebrow copy in `content.ts` was edited by the reviewer to `YOU ARE INVITED` (Phase 1); kept as is.
+- `SwirlBand.tsx` removed; new `SectionDivider.tsx` renders `<div class="section-divider" aria-hidden="true">` with the wave SVG, rendered in `App.tsx` between `<Hero />` and `<Timeline />` (no longer absolutely positioned inside the hero; hero bottom padding removed).
+- SVG `viewBox` trimmed to the measured artwork bounds (`0 9 390 83`, no internal top/bottom padding), `preserveAspectRatio="none"` so it is full-bleed at any width; sheen strokes use `vector-effect: non-scaling-stroke`.
+- Spacing: one CSS variable `--divider-gap: clamp(20px, 5vw, 32px)` (in `:root`) used for both `margin-top` and `margin-bottom` of `.section-divider`. Measured gap slogan→wave and wave→`SCHEDULE`: **20 / 20px** at 320–390px, **22 / 22px** at 430px.
+- Wave height 96px → **64px**; the `SCHEDULE` header now starts at y≈347 on a 390px phone (was ≈370).
+- Verified at 320 / 360 / 390 / 430px: no horizontal overflow; build passes. Schedule block unchanged in height (header + 5 cards ≈ 440px, fits one 844px screen).
+
+---
+
+### Phase 3 – Schedule data, hero time, compact cards / 식순 데이터·시간·카드 (done, awaiting review)
+- `content.ts` (EN + KO), same 5 time ranges:
+  1. `Welcome & VIP Luncheon` · Networking lunch · Training Room / 환영 및 VIP 오찬 · 네트워킹 오찬 · 트레이닝 룸
+  2. `Opening & History` · Opening video & Tennessee site history · Main Stage / 오프닝 및 법인 연혁 · 오프닝 영상 및 TN 법인 연혁 · 메인 무대
+  3. `10 Millionth Unit Ceremony` (highlighted, badge `KEYNOTE • REVEAL`) · 10M unit unveiling, congratulatory videos & remarks · Main Stage / 천만 대 생산 기념식 · 천만 대 제품 공개, 축전 영상 및 축사 · 메인 무대
+  4. `Celebration & Awards` · Signing, cake-cutting, contributor recognition & commemorative photo · Main Stage / 기념 행사 및 시상 · 사이닝, 케이크 커팅, 공로자 시상 및 기념 촬영 · 메인 무대
+  5. `Closing & Send-Off` · Closing remarks & VIP send-off · Main Entrance / 폐회 및 환송 · 마무리 인사 및 VIP 환송 · 정문
+- Removed the `SPECIAL MILLIONTH UNIT REVEAL` chip (data field `chip` deleted from the type and from the card).
+- Hero time `12:00 PM CST` → **`12:20 PM CST`** (KO `오후 12:20 (CST)`); `EVENT_START_ISO` set to `12:20 -06:00` (the D-day still counts Clarksville calendar days).
+- `Timeline.tsx` cards: padding 12 × 11px; time 13px, title 14px (keynote 15px), description 13px, venue 13px right-aligned (max 40%); descriptions wrap instead of being cut with an ellipsis so no programme text is lost (a 1-line ellipsis would hide "…commemorative photo", "…congratulatory videos & remarks"). Keynote badge stays a 10px label.
+- Measured (schedule header + 5 cards, EN): 360x780 → 514px, 390x844 → 479px, 430x932 → 443px; KO: 425 / 407 / 407px. All fit one screen with the sticky header (49px) and spare room. Not required but checked: 320x640 EN = 584px (does not fit, ~10px over). Heights vs. before: KO about the same (−8px at 390), EN **+48px at 390** because body text grew from 11px to 13px (chip removal saved ~22px).
+- Build passes; no horizontal overflow in any tested size.
+
+---
+
+### Phase 4 – Menu tabs instead of the carousel / 메뉴 탭 방식 (done, awaiting review)
+- `MenuCarousel.tsx` removed; new `MenuTabs.tsx` (used in `App.tsx`). The peeking next card is gone.
+- **Tabs**: one pill per menu – `Korean | Thai | Mexican | Dessert` (KO `한식 | 타이식 | 멕시칸 | 디저트`). Active: crimson fill (`lg-red`) + white text; inactive: transparent with a subtle crimson border. Min height **44px** (measured 44), 13px semibold, equal widths (`flex-1`). The row scrolls horizontally if it overflows (only happens at 320px EN; the active tab scrolls into view). The long label `Dessert & Drink` uses a short `tabLabel` (`Dessert` / `디저트`) in the tab; the card heading still reads `Dessert & Drink`. `MenuItem.tabLabel` added to `content.ts`; `a11y.menuCarousel` → `a11y.menuTabs`, `goToSlide` removed.
+- **Card**: one full-width card; image `aspect-ratio 16:10`, `object-fit: cover` (as specified; crops a little of the Mexican and Dessert photos but never stretches). All four panels are stacked in the same grid cell, so every menu has **the same card height** (e.g. 425px at 390px EN; verified 434px for each tab in a run). Fade between panels `opacity` 300ms, disabled with `motion-reduce:transition-none`; inactive panels are `invisible`, `inert` and `aria-hidden`.
+- **Swipe** on the card (touch): ≥48px horizontal and clearly more horizontal than vertical → previous/next menu (no wrap); mostly vertical swipes are ignored (tested by dispatching touch events).
+- **A11y**: `role="tablist"` (label "Lunch menu options") / `role="tab"` with `aria-selected`, `aria-controls`, roving `tabIndex` / `role="tabpanel"` with `aria-labelledby`. Keyboard: Left/Right (wrapping), Home, End – tested.
+- Active tab shadow removed because the scroll container clipped it.
+- Verified EN + KO at 320 / 360 / 390 / 430 / 1280px: no horizontal overflow, build passes.
+
+---
+
+### Revision 9.1 – menu back to a carousel, no tab buttons (2026-10-26)
+Reviewer: "cards are fine, but let's do the menu as a carousel – I don't like having 4 extra buttons." Phase 4 tabs replaced.
+- `MenuTabs.tsx` removed; `MenuCarousel.tsx` restored with the **new cards** (16:10 `object-cover` photo, 13px dish list, same height for every card). **No buttons** at all in the section.
+- Swipe / scroll-snap carousel (`snap-x snap-mandatory`, `snap-always`, `overscroll-x-contain`), no library. Full-width cards, track is full-bleed with a 16px gap equal to the side padding, so the next card starts exactly at the screen edge and never peeks in (the "cut-off card" the review disliked). Verified at 320–1280px: next card left edge == viewport edge, equal heights, no overflow.
+- Position indicator: four small **non-interactive** dots (`aria-hidden`), the active one is a crimson pill; they only show where you are.
+- A11y: `role="region"` + `aria-roledescription="carousel"`, slides are `group`/`slide` with "n / 4" labels; the track is focusable and Left/Right arrow keys scroll one card (instant under reduced motion). Tested.
+- `content.ts`: tab-only keys removed (`tabLabel`), `a11y.menuTabs` → `a11y.menuCarousel`.
+- Card shadows no longer clipped under the track (extra vertical padding).
+
+---
+
+### Revision 9.2 – no gold lines around the menu carousel (2026-10-26)
+- Cause: the swipe track is focusable (`tabIndex=0`, needed for arrow-key scrolling) and the browser drew its focus outline around the full-bleed track, i.e. a coloured line above and below the cards after touching/swiping.
+- Fix (`MenuCarousel.tsx`): track is `outline-none`; keyboard users still get a visible cue – a thin crimson ring around the position dots (`peer-focus-visible`), which only appears for keyboard focus, not touch or mouse. Keyboard scrolling is unchanged.
+- Verified: after clicking/dragging the track the outline colour is transparent; the ring shows only after Tab / Shift+Tab. Build passes.
+
+---
