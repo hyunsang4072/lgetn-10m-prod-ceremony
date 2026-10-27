@@ -464,3 +464,9 @@ Git: all Phase 1–4 work was already committed (`bf94fae`, "first commit"); the
 3. Wait for the "Deploy to GitHub Pages" workflow, open the URL above, test on a real phone (iOS Safari + Android Chrome).
 
 ---
+
+## Revision 10 – minimal hero, shorter schedule copy / 히어로 최소화, 식순 문구 축약 (2026-10-27)
+
+- Hero: eyebrow, key message/location and slogan removed; only `10 MILLION / PRODUCTION CEREMONY` + date/time remain. A short gold rule sits between them; date/time size is now `clamp(13px,4.3vw,18px)`. Unused `eyebrow/keyMessage/location/slogan` fields removed from `content.ts`.
+- Schedule: descriptions shortened so cards stay on one line on mobile (Opening: `Opening video`; Reveal: `Unveiling, videos & remarks`; Celebration: `Signing, cake-cutting & photo`) in EN and KO.
+- Previous version is commit `1ab8a71` (tree was clean, nothing new to commit).

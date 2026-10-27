@@ -56,14 +56,10 @@ export interface ContentData {
     ended: string
   }
   hero: {
-    eyebrow: string
     titleTop: string
     titleBottom: string
-    keyMessage: string
-    location: string
     date: string
     time: string
-    slogan: string
   }
   schedule: {
     sectionTitle: string
@@ -101,14 +97,10 @@ const en: ContentData = {
     ended: 'ENDED',
   },
   hero: {
-    eyebrow: 'YOU ARE INVITED',
     titleTop: '10 MILLION',
     titleBottom: 'PRODUCTION CEREMONY',
-    keyMessage: 'A New Milestone in Laundry Innovation',
-    location: 'Clarksville, Tennessee',
     date: 'Friday, Nov 13, 2026',
     time: '12:20 PM CST',
-    slogan: 'Together We Build A Better Tomorrow',
   },
   schedule: {
     sectionTitle: 'SCHEDULE',
@@ -126,14 +118,14 @@ const en: ContentData = {
         id: 'opening',
         time: '12:50 – 13:05',
         title: 'Opening & History',
-        description: 'Opening video & Tennessee site history',
+        description: 'Opening video',
         location: 'Main Stage',
       },
       {
         id: 'reveal',
         time: '13:05 – 13:25',
         title: '10 Millionth Unit Ceremony',
-        description: '10M unit unveiling, congratulatory videos & remarks',
+        description: 'Unveiling, videos & remarks',
         location: 'Main Stage',
         highlight: true,
         badge: 'KEYNOTE • REVEAL',
@@ -142,7 +134,7 @@ const en: ContentData = {
         id: 'celebration',
         time: '13:25 – 14:05',
         title: 'Celebration & Awards',
-        description: 'Signing, cake-cutting, contributor recognition & commemorative photo',
+        description: 'Signing, cake-cutting & photo',
         location: 'Main Stage',
       },
       {
@@ -234,14 +226,10 @@ const ko: ContentData = {
     ended: '종료',
   },
   hero: {
-    eyebrow: '귀하를 초대합니다',
     titleTop: '1,000만 대',
     titleBottom: '생산 기념식',
-    keyMessage: '세탁 혁신의 새로운 이정표',
-    location: '테네시주 클락스빌',
     date: '2026년 11월 13일 (금)',
     time: '오후 12:20 (CST)',
-    slogan: '함께 만들어가는 더 나은 내일',
   },
   schedule: {
     sectionTitle: '식순',
@@ -259,14 +247,14 @@ const ko: ContentData = {
         id: 'opening',
         time: '12:50 – 13:05',
         title: '오프닝 및 법인 연혁',
-        description: '오프닝 영상 및 TN 법인 연혁',
+        description: '오프닝 영상',
         location: '메인 무대',
       },
       {
         id: 'reveal',
         time: '13:05 – 13:25',
         title: '천만 대 생산 기념식',
-        description: '천만 대 제품 공개, 축전 영상 및 축사',
+        description: '제품 공개, 축전 영상 및 축사',
         location: '메인 무대',
         highlight: true,
         badge: '키노트 • 공개',
@@ -275,7 +263,7 @@ const ko: ContentData = {
         id: 'celebration',
         time: '13:25 – 14:05',
         title: '기념 행사 및 시상',
-        description: '사이닝, 케이크 커팅, 공로자 시상 및 기념 촬영',
+        description: '사이닝, 케이크 커팅, 기념 촬영',
         location: '메인 무대',
       },
       {

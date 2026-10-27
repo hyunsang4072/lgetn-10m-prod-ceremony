@@ -58,7 +58,7 @@
 }
 
 @layer components {
-  /* Wave between the slogan and the schedule: the same gap above and below keeps it centred. */
+  /* Wave between the hero and the schedule: the same gap above and below keeps it centred. */
   .section-divider {
     margin-block: var(--divider-gap);
     line-height: 0;
