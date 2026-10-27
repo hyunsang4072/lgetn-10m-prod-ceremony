@@ -470,3 +470,13 @@ Git: all Phase 1–4 work was already committed (`bf94fae`, "first commit"); the
 - Hero: eyebrow, key message/location and slogan removed; only `10 MILLION / PRODUCTION CEREMONY` + date/time remain. A short gold rule sits between them; date/time size is now `clamp(13px,4.3vw,18px)`. Unused `eyebrow/keyMessage/location/slogan` fields removed from `content.ts`.
 - Schedule: descriptions shortened so cards stay on one line on mobile (Opening: `Opening video`; Reveal: `Unveiling, videos & remarks`; Celebration: `Signing, cake-cutting & photo`) in EN and KO.
 - Previous version is commit `1ab8a71` (tree was clean, nothing new to commit).
+
+## Revision 11 – crimson + gold ambient glow behind wave and schedule / 물결·식순 배경 글로우 (2026-10-27)
+
+- `App.tsx` wraps `SectionDivider` + `Timeline` in `.schedule-glow`; `index.css` paints five large radial gradients (deep crimson / gold, alpha 0.7–0.9) on a `::before` layer, masked to fade into the cream page at top and bottom.
+- Cards keep `.glass-sm` (white 55% + blur), so the glow tints them while text stays readable.
+
+### Revision 11.1 – wave moved up, glow only at the side edges / 물결 상향, 좌우 가장자리 글로우 (2026-10-27)
+
+- `.section-divider`: top margin `clamp(8px,2.5vw,12px)` (was equal to the bottom gap) so the wave sits right under the date.
+- `.schedule-glow::before`: replaced the full-width blocks with six soft ellipses centred just outside the left (gold) and right (crimson + gold) edges, alpha 0.42–0.55. The centre stays light so the red timeline and glass cards keep their contrast.

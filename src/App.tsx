@@ -13,8 +13,10 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <SectionDivider />
-        <Timeline />
+        <div className="schedule-glow">
+          <SectionDivider />
+          <Timeline />
+        </div>
         <MenuCarousel />
       </main>
       <Footer />
