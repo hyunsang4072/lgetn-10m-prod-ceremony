@@ -480,3 +480,17 @@ Git: all Phase 1–4 work was already committed (`bf94fae`, "first commit"); the
 
 - `.section-divider`: top margin `clamp(8px,2.5vw,12px)` (was equal to the bottom gap) so the wave sits right under the date.
 - `.schedule-glow::before`: replaced the full-width blocks with six soft ellipses centred just outside the left (gold) and right (crimson + gold) edges, alpha 0.42–0.55. The centre stays light so the red timeline and glass cards keep their contrast.
+
+## Revision 12 – Arial everywhere / 전체 폰트 Arial (2026-11-02)
+
+- `tailwind.config.js`: `sans` and `display` = Arial, Liberation Sans, Helvetica, then Pretendard (Hangul only, since Arial has no Korean glyphs).
+- Removed `@fontsource-variable/inter` and `playfair-display` (imports + packages). Hero `10 MILLION` is now Arial Bold (Arial has no medium weight); KO title uses the same bold.
+- Android has no Arial; Liberation Sans / Roboto render instead.
+
+### Revision 12.1 – Korean = Pretendard / 한글은 Pretendard (2026-11-02)
+
+- `index.css`: `:lang(ko)` uses Pretendard (self-hosted) first, then Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR, Nanum Square Neo, SUIT, Spoqa Han Sans Neo. English stays Arial. LG EI font was evaluated and dropped (size ~2.6 MB/weight, licence unclear).
+
+### Revision 12.2 – mouse drag on the menu carousel / PC 마우스 드래그 (2026-11-02)
+
+- `MenuCarousel.tsx`: pointer handlers for `pointerType === 'mouse'` only (touch keeps native swipe). Snap is paused while dragging, then eases to the next/previous card when the drag exceeds 15% of a card; otherwise returns to the current one. Cursor shows grab/grabbing; text selection disabled on the track. Arrow keys, trackpad and Shift+wheel still work. Verified with a simulated drag: card 1 -> 2, dots follow.

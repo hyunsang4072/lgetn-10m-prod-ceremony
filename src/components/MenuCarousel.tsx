@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
 import { useLanguage } from '@/context/LanguageContext'
 import type { MenuItem } from '@/data/content'
 
@@ -59,6 +59,45 @@ export default function MenuCarousel() {
   const { sectionTitle, categories } = t.menu
   const trackRef = useRef<HTMLUListElement>(null)
   const [active, setActive] = useState(0)
+  const drag = useRef({ down: false, startX: 0, startLeft: 0, timer: 0 })
+
+  const stepOf = (track: HTMLUListElement) => {
+    const first = track.children[0] as HTMLElement
+    const second = track.children[1] as HTMLElement
+    return second.offsetLeft - first.offsetLeft
+  }
+
+  // Mouse only: touch already swipes natively. Snapping is paused while dragging, then eased to the target card.
+  const onPointerDown = (e: PointerEvent<HTMLUListElement>) => {
+    const track = trackRef.current
+    if (!track || e.pointerType !== 'mouse' || e.button !== 0) return
+    window.clearTimeout(drag.current.timer)
+    drag.current = { down: true, startX: e.clientX, startLeft: track.scrollLeft, timer: 0 }
+    track.style.scrollSnapType = 'none'
+    track.style.cursor = 'grabbing'
+    track.setPointerCapture(e.pointerId)
+  }
+
+  const onPointerMove = (e: PointerEvent<HTMLUListElement>) => {
+    const track = trackRef.current
+    if (!track || !drag.current.down) return
+    track.scrollLeft = drag.current.startLeft - (e.clientX - drag.current.startX)
+  }
+
+  const endDrag = (e: PointerEvent<HTMLUListElement>) => {
+    const track = trackRef.current
+    if (!track || !drag.current.down) return
+    const step = stepOf(track)
+    const dx = e.clientX - drag.current.startX
+    const from = Math.round(drag.current.startLeft / step)
+    const bias = Math.abs(dx) > step * 0.15 ? (dx < 0 ? 1 : -1) : 0
+    const target = Math.max(0, Math.min(categories.length - 1, from + bias))
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    drag.current.down = false
+    track.style.cursor = ''
+    track.scrollTo({ left: target * step, behavior: reduce ? 'auto' : 'smooth' })
+    drag.current.timer = window.setTimeout(() => (track.style.scrollSnapType = ''), reduce ? 0 : 450)
+  }
 
   useEffect(() => {
     const track = trackRef.current
@@ -106,7 +145,11 @@ export default function MenuCarousel() {
           ref={trackRef}
           tabIndex={0}
           onKeyDown={onKeyDown}
-          className="peer no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-7 pt-3 -mb-4 -mt-2 outline-none"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          className="peer no-scrollbar -mx-4 flex cursor-grab select-none snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-7 pt-3 -mb-4 -mt-2 outline-none"
         >
           {categories.map((item, i) => (
             <MenuCard key={item.id} item={item} index={i} total={categories.length} eager={i === 0} />

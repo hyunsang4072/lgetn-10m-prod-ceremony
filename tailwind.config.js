@@ -29,8 +29,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Inter Variable"', '"Pretendard Variable"', 'Pretendard', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Playfair Display Variable"', '"Pretendard Variable"', 'Georgia', 'serif'],
+        sans: ['Arial', '"Liberation Sans"', 'Helvetica', '"Pretendard Variable"', 'Pretendard', 'sans-serif'],
+        display: ['Arial', '"Liberation Sans"', 'Helvetica', '"Pretendard Variable"', 'Pretendard', 'sans-serif'],
       },
       boxShadow: {
         glass: '0 8px 32px rgba(120, 20, 50, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.8)',

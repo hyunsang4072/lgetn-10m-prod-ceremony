@@ -43,6 +43,13 @@
     overflow-wrap: break-word;
   }
 
+  /* Korean: self-hosted Pretendard first; the rest only apply if installed on the device. */
+  :lang(ko) body,
+  :lang(ko) .font-display {
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR',
+      'Nanum Square Neo', SUIT, 'Spoqa Han Sans Neo', sans-serif;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -68,6 +75,7 @@
   /* Hero headline: both lines scale with the viewport so they stay roughly equal in width */
   .hero-title-top {
     font-size: clamp(2.2rem, 14.4vw, 4rem);
+    font-weight: 700;
     letter-spacing: -0.01em;
   }
   .hero-title-bottom {
@@ -75,8 +83,7 @@
     letter-spacing: 0.03em;
   }
   :lang(ko) .hero-title-top {
-    font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: clamp(2.1rem, 14vw, 3.8rem);
     letter-spacing: -0.03em;
   }

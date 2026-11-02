@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="relative px-4 pt-5 text-center">
       <h1 className="flex flex-col items-center">
         <span
-          className="animate-fade-up hero-title-top inline-block bg-title-gradient bg-clip-text font-display font-medium leading-[1.02] text-transparent"
+          className="animate-fade-up hero-title-top inline-block bg-title-gradient bg-clip-text font-display leading-[1.02] text-transparent"
           style={rise(0)}
         >
           {hero.titleTop}
