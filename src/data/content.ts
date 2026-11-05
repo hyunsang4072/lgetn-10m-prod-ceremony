@@ -81,7 +81,7 @@ const en: ContentData = {
   meta: {
     title: '10 Million Production Ceremony | LG Electronics',
     description:
-      'LG Electronics VIP Digital Invitation – 10 Million Production Ceremony, Clarksville, Tennessee',
+      'LG Electronics Digital Invitation – 10 Million Production Ceremony, Clarksville, Tennessee',
   },
   a11y: {
     switchLanguage: 'Switch language',
@@ -110,7 +110,7 @@ const en: ContentData = {
       {
         id: 'welcome',
         time: '12:20 – 12:50',
-        title: 'Welcome & VIP Luncheon',
+        title: 'Welcome & Luncheon',
         description: 'Networking lunch',
         location: 'Training Room',
       },
@@ -147,7 +147,7 @@ const en: ContentData = {
     ],
   },
   menu: {
-    sectionTitle: 'SPECIAL VIP LUNCHEON',
+    sectionTitle: 'LUNCHEON MENU',
     categories: [
       {
         id: 'korean',
@@ -210,7 +210,7 @@ const en: ContentData = {
 const ko: ContentData = {
   meta: {
     title: '1,000만 대 생산 기념식 | LG전자',
-    description: 'LG전자 VIP 디지털 초청장 – 1,000만 대 생산 기념식, 미국 테네시주 클락스빌',
+    description: 'LG전자 디지털 초청장 – 1,000만 대 생산 기념식, 미국 테네시주 클락스빌',
   },
   a11y: {
     switchLanguage: '언어 전환',
@@ -239,7 +239,7 @@ const ko: ContentData = {
       {
         id: 'welcome',
         time: '12:20 – 12:50',
-        title: '환영 및 VIP 오찬',
+        title: '환영 및 오찬',
         description: '네트워킹 오찬',
         location: '트레이닝 룸',
       },
@@ -276,7 +276,7 @@ const ko: ContentData = {
     ],
   },
   menu: {
-    sectionTitle: 'VIP 특별 오찬',
+    sectionTitle: '오찬 메뉴',
     categories: [
       {
         id: 'korean',
