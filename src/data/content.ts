@@ -79,9 +79,9 @@ export interface ContentData {
 
 const en: ContentData = {
   meta: {
-    title: '10 Million Production Ceremony | LG Electronics',
+    title: '10 Million Ceremony | LG Electronics',
     description:
-      'LG Electronics Digital Invitation – 10 Million Production Ceremony, Clarksville, Tennessee',
+      'LG Electronics Digital Invitation – 10 Million Ceremony, Clarksville, Tennessee',
   },
   a11y: {
     switchLanguage: 'Switch language',
@@ -98,9 +98,9 @@ const en: ContentData = {
   },
   hero: {
     titleTop: '10 MILLION',
-    titleBottom: 'PRODUCTION CEREMONY',
-    date: 'Friday, Nov 13, 2026',
-    time: '12:20 PM CST',
+    titleBottom: 'CEREMONY',
+    date: 'Friday, November 13, 2026',
+    time: '12:20 PM (CST)',
   },
   schedule: {
     sectionTitle: 'SCHEDULE',
@@ -109,45 +109,45 @@ const en: ContentData = {
     items: [
       {
         id: 'welcome',
-        time: '12:20 – 12:50',
-        title: 'Welcome & Luncheon',
-        description: 'Networking lunch',
-        location: 'Training Room',
+        time: '12:20 – 12:55',
+        title: 'Welcome & Lunch',
+        description: 'Warm-up session & lunch',
+        location: 'Event Hall Entrance',
       },
       {
         id: 'opening',
-        time: '12:50 – 13:05',
-        title: 'Opening & History',
-        description: 'Opening video',
+        time: '12:55 – 13:05',
+        title: 'Opening & Corporate History',
+        description: 'Opening video & corporate history',
         location: 'Main Stage',
       },
       {
         id: 'reveal',
-        time: '13:05 – 13:25',
-        title: '10 Millionth Unit Ceremony',
-        description: 'Unveiling, videos & remarks',
+        time: '13:05 – 13:35',
+        title: '10M Ceremony & Product Unveiling',
+        description: '10M video, remarks, reveal & awards',
         location: 'Main Stage',
         highlight: true,
         badge: 'KEYNOTE • REVEAL',
       },
       {
         id: 'celebration',
-        time: '13:25 – 14:05',
-        title: 'Celebration & Awards',
-        description: 'Signing, cake-cutting & photo',
+        time: '13:35 – 14:05',
+        title: 'Commemorative Event & Awards',
+        description: 'Signing, cake cutting & photo',
         location: 'Main Stage',
       },
       {
         id: 'closing',
-        time: '14:05 – 15:10',
-        title: 'Closing & Send-Off',
-        description: 'Closing remarks & VIP send-off',
-        location: 'Main Entrance',
+        time: '14:05 – 14:10',
+        title: 'Closing & Farewell',
+        description: 'Closing remarks & farewell',
+        location: 'Main Gate',
       },
     ],
   },
   menu: {
-    sectionTitle: 'LUNCHEON MENU',
+    sectionTitle: 'LUNCH MENU',
     categories: [
       {
         id: 'korean',
@@ -209,15 +209,15 @@ const en: ContentData = {
 
 const ko: ContentData = {
   meta: {
-    title: '1,000만 대 생산 기념식 | LG전자',
-    description: 'LG전자 디지털 초청장 – 1,000만 대 생산 기념식, 미국 테네시주 클락스빌',
+    title: '10 Million Ceremony | LG전자',
+    description: 'LG전자 디지털 초청장 – 10 Million Ceremony, 미국 테네시주 클락스빌',
   },
   a11y: {
     switchLanguage: '언어 전환',
     logoAlt: 'LG전자',
-    emblemAlt: '1,000만 대 생산 기념 엠블럼',
+    emblemAlt: '10 Million Ceremony 기념 엠블럼',
     scheduleList: '기념식 식순',
-    menuCarousel: '오찬 메뉴 선택지',
+    menuCarousel: '중식 메뉴 선택지',
     backToTop: '맨 위로',
   },
   header: {
@@ -226,8 +226,8 @@ const ko: ContentData = {
     ended: '종료',
   },
   hero: {
-    titleTop: '1,000만 대',
-    titleBottom: '생산 기념식',
+    titleTop: '10 MILLION',
+    titleBottom: 'CEREMONY',
     date: '2026년 11월 13일 (금)',
     time: '오후 12:20 (CST)',
   },
