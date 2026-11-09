@@ -111,35 +111,21 @@ const en: ContentData = {
         id: 'welcome',
         time: '12:20 – 12:55',
         title: 'Welcome & Lunch',
-<<<<<<< HEAD
         description: 'Warm Up Session & Lunch',
         location: 'Event Entrance',
-=======
-        description: 'Warm-up session & lunch',
-        location: 'Event Hall Entrance',
->>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
       },
       {
         id: 'opening',
         time: '12:55 – 13:05',
         title: 'Opening & Corporate History',
-<<<<<<< HEAD
         description: 'Opening Video & Corporate History Intro',
-=======
-        description: 'Opening video & corporate history',
->>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Stage',
       },
       {
         id: 'reveal',
         time: '13:05 – 13:35',
-<<<<<<< HEAD
         title: '10M Ceremony',
         description: '10M Video, Remarks, Product Unveiling & Awards',
-=======
-        title: '10M Ceremony & Product Unveiling',
-        description: '10M video, remarks, reveal & awards',
->>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Stage',
         highlight: true,
         badge: '10Mth Product Unveiling',
@@ -148,23 +134,14 @@ const en: ContentData = {
         id: 'celebration',
         time: '13:35 – 14:05',
         title: 'Commemorative Event & Awards',
-<<<<<<< HEAD
         description: 'Signing, Cake Cutting, Commemorative Photo',
-=======
-        description: 'Signing, cake cutting & photo',
->>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Stage',
       },
       {
         id: 'closing',
         time: '14:05 – 14:10',
-<<<<<<< HEAD
         title: 'Closing & Send-off',
         description: 'Closing Remarks & Send-off',
-=======
-        title: 'Closing & Farewell',
-        description: 'Closing remarks & farewell',
->>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Gate',
       },
     ],
