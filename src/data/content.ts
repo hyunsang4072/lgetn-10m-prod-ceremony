@@ -111,21 +111,35 @@ const en: ContentData = {
         id: 'welcome',
         time: '12:20 – 12:55',
         title: 'Welcome & Lunch',
+<<<<<<< HEAD
         description: 'Warm Up Session & Lunch',
         location: 'Event Entrance',
+=======
+        description: 'Warm-up session & lunch',
+        location: 'Event Hall Entrance',
+>>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
       },
       {
         id: 'opening',
         time: '12:55 – 13:05',
         title: 'Opening & Corporate History',
+<<<<<<< HEAD
         description: 'Opening Video & Corporate History Intro',
+=======
+        description: 'Opening video & corporate history',
+>>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Stage',
       },
       {
         id: 'reveal',
         time: '13:05 – 13:35',
+<<<<<<< HEAD
         title: '10M Ceremony',
         description: '10M Video, Remarks, Product Unveiling & Awards',
+=======
+        title: '10M Ceremony & Product Unveiling',
+        description: '10M video, remarks, reveal & awards',
+>>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Stage',
         highlight: true,
         badge: '10Mth Product Unveiling',
@@ -134,14 +148,23 @@ const en: ContentData = {
         id: 'celebration',
         time: '13:35 – 14:05',
         title: 'Commemorative Event & Awards',
+<<<<<<< HEAD
         description: 'Signing, Cake Cutting, Commemorative Photo',
+=======
+        description: 'Signing, cake cutting & photo',
+>>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Stage',
       },
       {
         id: 'closing',
         time: '14:05 – 14:10',
+<<<<<<< HEAD
         title: 'Closing & Send-off',
         description: 'Closing Remarks & Send-off',
+=======
+        title: 'Closing & Farewell',
+        description: 'Closing remarks & farewell',
+>>>>>>> 9bb6005c33802354aaff42aac78feeca2eb48ec9
         location: 'Main Gate',
       },
     ],
@@ -209,15 +232,15 @@ const en: ContentData = {
 
 const ko: ContentData = {
   meta: {
-    title: '1,000만 대 생산 기념식 | LG전자',
-    description: 'LG전자 디지털 초청장 – 1,000만 대 생산 기념식, 미국 테네시주 클락스빌',
+    title: '10 Million Ceremony | LG전자',
+    description: 'LG전자 디지털 초청장 – 10 Million Ceremony, 미국 테네시주 클락스빌',
   },
   a11y: {
     switchLanguage: '언어 전환',
     logoAlt: 'LG전자',
-    emblemAlt: '1,000만 대 생산 기념 엠블럼',
+    emblemAlt: '10 Million Ceremony 기념 엠블럼',
     scheduleList: '기념식 식순',
-    menuCarousel: '오찬 메뉴 선택지',
+    menuCarousel: '중식 메뉴 선택지',
     backToTop: '맨 위로',
   },
   header: {
@@ -226,8 +249,8 @@ const ko: ContentData = {
     ended: '종료',
   },
   hero: {
-    titleTop: '1,000만 대',
-    titleBottom: '생산 기념식',
+    titleTop: '10 MILLION',
+    titleBottom: 'CEREMONY',
     date: '2026년 11월 13일 (금)',
     time: '오후 12:20 (CST)',
   },

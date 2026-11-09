@@ -72,25 +72,16 @@
     line-height: 0;
   }
 
-  /* Hero headline: both lines scale with the viewport so they stay roughly equal in width */
+  /* Hero headline: scales fluidly with the viewport across all devices (320px to desktop) */
   .hero-title-top {
-    font-size: clamp(2.2rem, 14.4vw, 4rem);
+    font-size: clamp(2.1rem, 13vw, 3.5rem);
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
   .hero-title-bottom {
-    font-size: clamp(1rem, 5.8vw, 1.65rem);
-    letter-spacing: 0.03em;
-  }
-  :lang(ko) .hero-title-top {
-    font-weight: 700;
-    font-size: clamp(2.1rem, 14vw, 3.8rem);
-    letter-spacing: -0.03em;
-  }
-  :lang(ko) .hero-title-bottom {
-    font-size: clamp(1.05rem, 7.2vw, 1.8rem);
-    letter-spacing: 0.2em;
-    padding-left: 0.2em;
+    font-size: clamp(1rem, 5.8vw, 1.55rem);
+    letter-spacing: 0.22em;
+    padding-left: 0.22em;
     font-weight: 600;
   }
 

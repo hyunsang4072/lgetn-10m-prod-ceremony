@@ -10,13 +10,13 @@ export default function Hero() {
     <section className="relative px-4 pt-5 text-center">
       <h1 className="flex flex-col items-center">
         <span
-          className="animate-fade-up hero-title-top inline-block bg-title-gradient bg-clip-text font-display leading-[1.02] text-transparent"
+          className="animate-fade-up hero-title-top inline-block whitespace-nowrap bg-title-gradient bg-clip-text font-display leading-[1.02] text-transparent"
           style={rise(0)}
         >
           {hero.titleTop}
         </span>
         <span
-          className="animate-fade-up hero-title-bottom inline-block font-medium uppercase leading-tight text-ink"
+          className="animate-fade-up hero-title-bottom inline-block whitespace-nowrap font-medium uppercase leading-tight text-ink"
           style={rise(90)}
         >
           {hero.titleBottom}
@@ -30,10 +30,12 @@ export default function Hero() {
       />
 
       <p
-        className="animate-fade-up mt-4 text-[clamp(13px,4.3vw,18px)] font-medium leading-snug text-ink"
+        className="animate-fade-up mt-4 flex flex-wrap items-center justify-center gap-x-1.5 text-[clamp(12.5px,3.8vw,16.5px)] font-medium leading-snug text-ink"
         style={rise(270)}
       >
-        {hero.date} <span className="px-1.5 font-normal text-ink-mute">|</span> {hero.time}
+        <span className="whitespace-nowrap">{hero.date}</span>
+        <span aria-hidden className="font-normal text-ink-mute">|</span>
+        <span className="whitespace-nowrap">{hero.time}</span>
       </p>
     </section>
   )
