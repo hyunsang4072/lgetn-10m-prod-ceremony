@@ -79,9 +79,9 @@ export interface ContentData {
 
 const en: ContentData = {
   meta: {
-    title: '10 Million Production Ceremony | LG Electronics',
+    title: '10 Million Ceremony | LG Electronics',
     description:
-      'LG Electronics Digital Invitation – 10 Million Production Ceremony, Clarksville, Tennessee',
+      'LG Electronics Digital Invitation – 10 Million Ceremony, Clarksville, Tennessee',
   },
   a11y: {
     switchLanguage: 'Switch language',
@@ -98,56 +98,56 @@ const en: ContentData = {
   },
   hero: {
     titleTop: '10 MILLION',
-    titleBottom: 'PRODUCTION CEREMONY',
-    date: 'Friday, Nov 13, 2026',
-    time: '12:20 PM CST',
+    titleBottom: 'CEREMONY',
+    date: 'Friday, November 13, 2026',
+    time: '12:20 PM (CST)',
   },
   schedule: {
     sectionTitle: 'SCHEDULE',
     sessionCount: '{count} Sessions',
-    liveSync: 'LIVE SYNC',
+    liveSync: 'LIVE',
     items: [
       {
         id: 'welcome',
-        time: '12:20 – 12:50',
-        title: 'Welcome & Luncheon',
-        description: 'Networking lunch',
-        location: 'Training Room',
+        time: '12:20 – 12:55',
+        title: 'Welcome & Lunch',
+        description: 'Warm Up Session & Lunch',
+        location: 'Event Entrance',
       },
       {
         id: 'opening',
-        time: '12:50 – 13:05',
-        title: 'Opening & History',
-        description: 'Opening video',
+        time: '12:55 – 13:05',
+        title: 'Opening & Corporate History',
+        description: 'Opening Video & Corporate History Intro',
         location: 'Main Stage',
       },
       {
         id: 'reveal',
-        time: '13:05 – 13:25',
-        title: '10 Millionth Unit Ceremony',
-        description: 'Unveiling, videos & remarks',
+        time: '13:05 – 13:35',
+        title: '10M Ceremony',
+        description: '10M Video, Remarks, Product Unveiling & Awards',
         location: 'Main Stage',
         highlight: true,
-        badge: 'KEYNOTE • REVEAL',
+        badge: '10Mth Product Unveiling',
       },
       {
         id: 'celebration',
-        time: '13:25 – 14:05',
-        title: 'Celebration & Awards',
-        description: 'Signing, cake-cutting & photo',
+        time: '13:35 – 14:05',
+        title: 'Commemorative Event & Awards',
+        description: 'Signing, Cake Cutting, Commemorative Photo',
         location: 'Main Stage',
       },
       {
         id: 'closing',
-        time: '14:05 – 15:10',
-        title: 'Closing & Send-Off',
-        description: 'Closing remarks & VIP send-off',
-        location: 'Main Entrance',
+        time: '14:05 – 14:10',
+        title: 'Closing & Send-off',
+        description: 'Closing Remarks & Send-off',
+        location: 'Main Gate',
       },
     ],
   },
   menu: {
-    sectionTitle: 'LUNCHEON MENU',
+    sectionTitle: 'LUNCH MENU',
     categories: [
       {
         id: 'korean',
@@ -203,7 +203,7 @@ const en: ContentData = {
     ],
   },
   footer: {
-    line: 'LG Electronics, Clarksville, TN · Built for Excellence',
+    line: 'LG Electronics, Clarksville, Tennessee · Built for Excellence',
   },
 }
 

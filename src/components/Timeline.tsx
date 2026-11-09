@@ -12,6 +12,13 @@ function CalendarIcon() {
   )
 }
 
+/** Renders "10Mth" with "th" as superscript. */
+function Ordinal({ text }: { text: string }) {
+  return text.split(/(?<=\d+M)(th)/i).map((part, i) =>
+    i % 2 === 1 ? <sup key={i} className="text-[0.7em]">{part}</sup> : part,
+  )
+}
+
 function Dot({ highlight, active }: { highlight?: boolean; active: boolean }) {
   const size = highlight ? 'h-[14px] w-[14px]' : 'h-[11px] w-[11px]'
   return (
@@ -39,15 +46,17 @@ function SessionCard({ item, active }: { item: ScheduleItem; active: boolean }) 
           <span className="text-[13px] tabular-nums text-ink-soft">{item.time}</span>
           {item.badge && (
             <span className="whitespace-nowrap rounded-full bg-gradient-to-r from-[#F5B942] to-[#F9D888] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em] text-lg-red-dark">
-              {item.badge}
+              <Ordinal text={item.badge} />
             </span>
           )}
         </div>
-        <p className="mt-0.5 text-[15px] font-bold leading-tight text-ink">{item.title}</p>
-        <div className="mt-0.5 flex items-start justify-between gap-3 text-[13px] leading-snug text-ink-soft">
-          <span className="min-w-0">{item.description}</span>
-          <span className="max-w-[40%] shrink-0 text-right">{item.location}</span>
+        <div className="mt-0.5 flex items-baseline justify-between gap-2">
+          <p className="whitespace-nowrap text-[15px] font-bold leading-tight text-ink">{item.title}</p>
+          <span className="whitespace-nowrap text-[13px] text-ink-soft">{item.location}</span>
         </div>
+        <p className="mt-0.5 whitespace-nowrap text-[clamp(10.5px,3.2vw,13px)] leading-snug text-ink-soft">
+          {item.description}
+        </p>
       </div>
     )
   }
@@ -56,14 +65,14 @@ function SessionCard({ item, active }: { item: ScheduleItem; active: boolean }) 
     <div
       className={`glass-sm rounded-2xl px-3 py-[11px] text-left ${active ? 'ring-2 ring-lg-red/40' : ''}`}
     >
-      <p className="flex flex-wrap items-baseline gap-x-2 leading-tight">
-        <span className="whitespace-nowrap text-[13px] tabular-nums text-ink-soft">{item.time}</span>
-        <span className="text-[14px] font-semibold text-ink">{item.title}</span>
-      </p>
-      <div className="mt-0.5 flex items-start justify-between gap-3 text-[13px] leading-snug text-ink-soft">
-        <span className="min-w-0">{item.description}</span>
-        <span className="max-w-[40%] shrink-0 text-right">{item.location}</span>
+      <div className="flex items-baseline justify-between gap-2 text-[13px] leading-tight text-ink-soft">
+        <span className="whitespace-nowrap tabular-nums">{item.time}</span>
+        <span className="whitespace-nowrap">{item.location}</span>
       </div>
+      <p className="mt-0.5 whitespace-nowrap text-[14px] font-semibold leading-tight text-ink">{item.title}</p>
+      <p className="mt-0.5 whitespace-nowrap text-[clamp(10.5px,3.2vw,13px)] leading-snug text-ink-soft">
+        {item.description}
+      </p>
     </div>
   )
 }
